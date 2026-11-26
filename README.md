@@ -1,94 +1,117 @@
-# NOCTURNE: The Silent Facility — GamerKie Original
+# NOCTURNE: BENEATH THE SILENT FACILITY — GamerKie Original
 
-An original atmospheric side-scrolling puzzle-platformer built with Next.js, React and Canvas 2D. It takes inspiration from the *mood* of cinematic puzzle-platformers (silhouette art, industrial spaces, environmental puzzles), while using an original world, character, layout and gameplay.
+**हिंदी में प्रोजेक्ट गाइड (मुख्य README)**
 
-## Included gameplay
+यह एक original cinematic 2.5D side-scrolling puzzle-platformer है। इसे आपके दिए गए reference frames की visual direction से बनाया गया है: नीला-काला underwater world, दूर से दिखता छोटा लाल-जैकेट वाला character, लकड़ी का भारी barricade, industrial searchlight, glass observation room, टूटा हुआ ऊँचा walkway और धुँध में खड़े लोगों वाला अंतिम hall। यह किसी commercial game की exact copy नहीं है; सभी locations, character artwork और level layout इस project के लिए original हैं।
 
-- Four connected areas: The Drowned Yard, The Watcher, The Broken Span and The Observation Wing.
-- Push a metal crate onto a pressure plate to open the first passage.
-- Stay crouched to slip beneath the moving searchlight.
-- Jump across the flooded platform gap.
-- Activate the control switch, open the final gate and reach the exit.
-- Checkpoint respawn, pause/resume, restart, fullscreen, sound toggle and progress HUD.
-- Keyboard and touch controls. Mobile play is designed for landscape orientation.
-- No backend, API key, external game asset or paid library is required.
+## 🎮 इस नए version में क्या बदला है?
 
-## Run locally
+- **Underwater opening:** तैरना, ऊपर-नीचे जाना, bubbles, underwater plants, light shafts और पानी में लटकी silhouettes।
+- **Timber Gate:** पुराने लकड़ी के boards को तोड़कर रास्ता खोलने का hold-to-interact puzzle।
+- **The Watcher:** घूमती हुई searchlight cone; खड़े रहने पर रोशनी में आने से खतरा, crouch करके बचें।
+- **Observation Wing:** बड़े glass windows, interior equipment और पीछे दिखाई देती human silhouettes।
+- **The Hollow Walk:** पानी/अंधेरे के ऊपर टूटे हुए staggered platforms पर jump करके पार जाएँ।
+- **The Last Crowd:** दूर खड़े लोगों की परछाइयों वाला बड़ा doorway, switch और final exit sequence।
+- Camera follow, parallax skyline, volumetric-style light cones, mist, particles, cinematic vignette, jump/swim character animation और soft ambient audio cues।
+- Checkpoint respawn, deaths counter, Pause/Resume, Restart, Fullscreen, Sound toggle और progress display।
+- Keyboard तथा mobile touch controls; mobile के लिए landscape layout।
+- कोई backend, API key, paid asset या external game engine आवश्यक नहीं। Artwork Canvas पर procedural रूप से draw होता है।
 
-Requirements: Node.js 20.9 or newer (the GitHub workflow uses Node.js 22).
+## 🕹️ Controls
+
+| काम | Keyboard | Mobile |
+|---|---|---|
+| आगे / पीछे | A / D या ← / → | Left / Right |
+| पानी में ऊपर / जमीन पर Jump | Space / W / ↑ | ↑ Button |
+| पानी में नीचे / जमीन पर Crouch | S / ↓ | ↓ Button |
+| Boards तोड़ना / Switch चलाना | E दबाकर रखें | E Button दबाकर रखें |
+| Pause / Resume | Esc या P | ऊपर Pause icon |
+| Checkpoint से reset | R | Pause menu में Restart |
+
+**ध्यान दें:** Underwater section में ↑ और ↓ swimming controls हैं। जमीन पर वही ↑ Jump और ↓ Crouch करते हैं। Timber Gate और अंतिम switch के पास E को तब तक दबाकर रखें जब तक progress पूरा न हो जाए।
+
+## 💻 अपने कंप्यूटर पर चलाएँ
+
+**जरूरत:** Node.js 20.9 या नया।
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+ब्राउज़र में `http://localhost:3000` खोलें।
 
-## Tests and production build
+## 🧪 Tests और Production Build
 
 ```bash
 npm test
 npm run build
 ```
 
-The production build exports a static site into `out/`.
+Unit tests level progression, water zone, searchlight collision cone, hold interaction progress और basic physics helpers जाँचते हैं। Successful static export के बाद `out/` folder बनता है।
 
-## Deploy to GitHub Pages
+## 🚀 GitHub Pages पर Deploy करें
 
-1. Create a new public GitHub repository (example: `nocturne-game`).
-2. Upload the contents of this project to the repository root. Do not upload the outer ZIP folder as an extra nested folder.
-3. Make sure the default branch is `main` (or `master`).
-4. In GitHub, open **Settings → Pages** and set the source to **GitHub Actions**.
-5. Open the **Actions** tab. The workflow named **Deploy Next.js game to GitHub Pages** will build and publish the game.
-6. When it finishes, your game URL will be:
+1. GitHub पर नया **Public Repository** बनाएँ, जैसे `nocturne-game`।
+2. इस ZIP को extract करें। Extract किए गए folder के अंदर की सभी files और folders repository के **root** में upload करें।
+3. **`.github` folder और उसके अंदर `workflows/deploy.yml` को जरूर upload करें।** यह hidden folder है; mobile file picker इसे छिपा सकता है। जरूरत पड़े तो GitHub web upload या desktop browser का उपयोग करें।
+4. Repository की default branch `main` रखें।
+5. Repository में **Settings → Pages → Build and deployment → Source** खोलकर **GitHub Actions** चुनें।
+6. **Actions** tab में `Deploy NOCTURNE to GitHub Pages` workflow शुरू होगा। Build और Deploy दोनों jobs के हरे होने तक प्रतीक्षा करें।
+7. Deployment URL यह होगा:
 
-   `https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/`
+```text
+https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/
+```
 
-The workflow automatically sets the repository base path, so static assets resolve correctly on a project GitHub Pages URL.
+Workflow repository के नाम के अनुसार `basePath` अपने आप set करता है। `public/.nojekyll` file भी शामिल है।
 
-## Embed in Blogger
+### Deployment fail हो तो
 
-1. Open `blogger/iframe-embed.html`.
-2. Replace `YOUR-GITHUB-USERNAME` and `YOUR-REPOSITORY` in the iframe URL with your actual GitHub Pages details.
-3. In Blogger, create or edit a post and switch the editor to **HTML view**.
-4. Paste the complete embed snippet and publish.
+- Actions खोलें और latest failed workflow चुनें।
+- लाल ❌ वाले step को expand करके सबसे नीचे का पूरा error देखें।
+- `npm install` fail हो तो dependency/network error; `npm run build` fail हो तो Next.js build error; `Upload Pages artifact` fail हो तो `out/` output की जाँच करें।
+- `.github/workflows/deploy.yml` मौजूद हो और Pages source `GitHub Actions` हो।
+- सिर्फ red cross का screenshot नहीं, failed step की आखिरी 20–30 log lines भी साझा करें।
 
-For a Blogger post description, use:
+## 📰 Blogger में Embed करें
 
-> Explore the abandoned Silent Facility in NOCTURNE, a cinematic puzzle-platformer from GamerKie. Push objects, avoid the searchlight, cross broken platforms and find the way out.
+1. `blogger/iframe-embed.html` खोलें।
+2. `YOUR-GITHUB-USERNAME` और `YOUR-REPOSITORY` को अपने GitHub username और repository name से बदलें।
+3. Blogger post editor में **HTML View** खोलें।
+4. पूरी iframe snippet paste करके post publish करें।
+5. Search title और description के लिए `BLOGGER-SEO.txt` देखें।
 
-Suggested Blogger labels: `Puzzle`, `Adventure`, `Platformer`, `Horror`, `GamerKie`.
-
-## Controls
-
-| Action | Keyboard | Touch |
-|---|---|---|
-| Move | A / D or ← / → | Left / right buttons |
-| Jump | Space / W / ↑ | Up button |
-| Crouch | S / ↓ | Down button |
-| Interact | E | E button |
-| Restart at checkpoint | R | — |
-| Pause / resume | Esc / P or top pause button | Top pause button |
-
-## Project structure
+## 📁 Project Structure
 
 ```text
 app/
-  game/engine.js       Canvas game engine
-  globals.css          Responsive dark game UI
-  layout.jsx            Next.js metadata and root layout
-  page.jsx              Game screen and touch controls
+  game/engine.js          Canvas 2.5D-style game engine
+  globals.css             Responsive dark interface
+  layout.jsx              Next.js metadata and layout
+  page.jsx                Game screen, HUD, touch controls
 lib/
-  physics.js            Deterministic collision helpers
-tests/
-  physics.test.js       Physics unit tests
+  physics.js              Collision helpers
+  level.js                Chapter routing, water, light, interaction rules
+ tests/
+  physics.test.js         Collision unit tests
+  level.test.js           Gameplay-rule tests
+  engine-smoke.test.js    Full route / game completion smoke test
 blogger/
-  iframe-embed.html     Blogger iframe embed snippet
+  iframe-embed.html       Blogger iframe code
 .github/workflows/
-  deploy.yml            GitHub Pages deployment
+  deploy.yml              GitHub Pages workflow
+public/
+  .nojekyll               GitHub Pages static file support
+README.md                 हिंदी README
+README-EN.md              English README
+BLOGGER-SEO.txt           Blogger title and description
+UPLOAD-HINDI.md           ZIP upload guide
+DEPLOYMENT-FIX-HINDI.md   Deployment troubleshooting
 ```
 
-## Notes
+## ℹ️ तकनीकी और visual सीमा
 
-- The exported static build is intended for GitHub Pages and iframe embedding.
-- The game is an original homage to a genre and visual mood. It does not include original *INSIDE* game assets, music, characters, level maps or proprietary code.
+यह Canvas 2D पर procedural shapes, gradients, shadows, parallax, fog, light cones और animation से बनाया गया cinematic 2.5D presentation है; यह full 3D model-based AAA rendering नहीं है। इसे reference image की composition और atmosphere के करीब लाने के लिए बनाया है, पर final look screen size/device पर थोड़ा अलग हो सकता है। इस environment में npm registry timeout की वजह से Next.js production build execute नहीं हो सका; GitHub Actions deployment में पहली बार dependency installation और production build verify होंगे। `npm test` और JavaScript syntax checks स्थानीय रूप से पास किए गए हैं।
+
+**GamerKie — Play. Think. Explore.**
