@@ -4,8 +4,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { createGame } from './game/engine.js';
 
 const INITIAL_HUD = {
-  chapter: 'THE DROWNED YARD',
-  objective: 'Move the crate onto the pressure plate.',
+  chapter: 'THE DROWNED',
+  objective: 'Swim toward the pale light. Keep moving right.',
   progress: 0,
   deaths: 0,
   hint: 'A quiet place. Keep moving.',
@@ -130,7 +130,7 @@ export default function Home() {
 
       <section className="game-area">
         <div className="game-frame" id="nocturne-game-frame">
-          <canvas ref={canvasRef} className="game-canvas" aria-label="NOCTURNE puzzle platform game" />
+          <canvas ref={canvasRef} className="game-canvas" aria-label="NOCTURNE cinematic 2.5D side-scrolling puzzle platform game" />
 
           <div className="hud-top">
             <div className="hud-objective">
@@ -148,7 +148,7 @@ export default function Home() {
           )}
 
           <div className="hud-bottom-left">
-            <span className="status-pill"><i className={hud.plateActive ? 'status-led on' : 'status-led'} /> PLATE {hud.plateActive ? 'ACTIVE' : 'OFF'}</span>
+            <span className="status-pill"><i className={hud.plateActive ? 'status-led on' : 'status-led'} /> GATE {hud.plateActive ? 'OPEN' : 'SEALED'}</span>
             <span className="status-pill"><i className={hud.powerOn ? 'status-led on' : 'status-led'} /> POWER {hud.powerOn ? 'ON' : 'OFF'}</span>
           </div>
           <div className="hud-bottom-right">NOCTURNE <span>·</span> {String(hud.deaths).padStart(2, '0')} FALLS</div>
@@ -173,11 +173,11 @@ export default function Home() {
                 <div className="eyebrow"><span /> A CINEMATIC PUZZLE PLATFORMER</div>
                 <h1>NOCTURNE</h1>
                 <p className="subtitle">THE SILENT FACILITY</p>
-                <p className="intro-copy">An abandoned complex. A light that never stops searching. Find the way out.</p>
+                <p className="intro-copy">Beneath the water, beyond the timber, a silent facility is still awake. Follow the light. Do not let it find you.</p>
                 <button className="primary-button" onClick={startGame}>BEGIN DESCENT <span>→</span></button>
-                <div className="intro-foot">HEADPHONES RECOMMENDED <span>·</span> AUTO-SAVED CHECKPOINTS</div>
+                <div className="intro-foot">A CINEMATIC 2.5D JOURNEY <span>·</span> CHECKPOINTS ENABLED</div>
               </div>
-              <div className="intro-side-note">CHAPTER 01 <span>—</span> THE DROWNED YARD</div>
+              <div className="intro-side-note">CHAPTER 01 <span>—</span> THE DROWNED</div>
             </div>
           )}
 
@@ -216,8 +216,8 @@ export default function Home() {
         <div className="below-game">
           <div className="control-legend">
             <span><kbd>A</kbd><kbd>D</kbd> MOVE</span>
-            <span><kbd>SPACE</kbd> JUMP</span>
-            <span><kbd>S</kbd> CROUCH</span>
+            <span><kbd>SPACE</kbd> JUMP / SWIM UP</span>
+            <span><kbd>S</kbd> CROUCH / SWIM DOWN</span>
             <span><kbd>E</kbd> INTERACT</span>
             <span><kbd>R</kbd> CHECKPOINT</span>
           </div>
